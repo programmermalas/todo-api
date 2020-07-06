@@ -36,10 +36,10 @@ class TodoController extends Controller
         // create todo
         $todo   = Todo::create([
             'todo'  => $request->todo,
-            'slug'  => Str::slug($requst->todo, '-')
+            'slug'  => Str::slug($request->todo, '-')
         ]);
 
-        return $response->json($todo, 201);
+        return response()->json($todo, 201);
     }
 
     public function show(Todo $todo)
@@ -64,7 +64,7 @@ class TodoController extends Controller
         // update todo
         $todo->update([
             'todo'  => $request->todo,
-            'slug'  => Str::slug($requst->todo, '-')
+            'slug'  => Str::slug($request->todo, '-')
         ]);
 
         return response()->json($todo, 200);
