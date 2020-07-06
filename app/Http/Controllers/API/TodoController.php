@@ -21,7 +21,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $validator  = Validator::make($request->all(), [
-            'todo'  => required
+            'todo'  => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -46,7 +46,7 @@ class TodoController extends Controller
     public function update(Request $request, Todo $todo)
     {
         $validator  = Validator::make($request->all(), [
-            'todo'  => required
+            'todo'  => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -54,7 +54,7 @@ class TodoController extends Controller
                 'message'   => $validator->messaages()->first()
             ], 400);
         }
-        
+
         $todo->update([
             'todo'  => $request->todo,
             'slug'  => Str::slug($requst->todo, '-')
