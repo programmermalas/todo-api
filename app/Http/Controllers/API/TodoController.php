@@ -42,8 +42,11 @@ class TodoController extends Controller
         return response()->json($todo, 201);
     }
 
-    public function show(Todo $todo)
+    public function show($slug)
     {
+        // get todo with slug
+        $todo   = Todo::where('slug', $slug)->first();
+
         return response()->json($todo);
     }
 
